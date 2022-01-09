@@ -209,6 +209,18 @@ class Graph:
         res = "Graph["+data+", " + ','.join(settings) + "  ]"
 
         return res
+    
+    # Generates strings that can be pasted into graphviz to draw a graph.
+    def toGraphviz(self):
+        nodes = [str(self.nodes.index(node)) + " [label=\"" + str(node) + "\"]" for node in self.nodes]
+        nodes_data = ";\n".join(nodes) + ";\n"
+
+        edges = [str(self.nodes.index(edge.n1)) + "->" + str(self.nodes.index(edge.n2)) + \
+            " [label=\"" + edge.value.method + "," + str(edge.value.method_data) + "\"]"  for edge in self.edges]
+        edges_data = ";\n".join(edges) + ";\n"
+
+        res = "digraph G {\n" + nodes_data + edges_data + "}"
+        return res
 
 
 class Form:
