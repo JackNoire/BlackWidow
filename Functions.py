@@ -59,7 +59,7 @@ def xpath_row_to_cell(addr):
 def remove_alerts(driver):
     # Try to clean up alerts
     try:
-        alert = driver.switch_to_alert()
+        alert = driver.switch_to.alert
         alert.dismiss()
     except NoAlertPresentException:
         pass
@@ -362,7 +362,7 @@ def execute_event(driver, do):
                         opt.click()
                     except UnexpectedAlertPresentException:
                         print("Alert detected")
-                        alert = driver.switch_to_alert()
+                        alert = driver.switch_to.alert
                         alert.dismiss()
             else:
                 # If ot a <select> we try to write
@@ -437,10 +437,10 @@ def form_fill(driver, target_form):
 
     # Ensure we don't have any alerts before filling in form
     try:
-        alert = driver.switch_to_alert()
+        alert = driver.switch_to.alert
         alertText = alert.text
         logging.info("Removed alert: " +  alertText)
-        alert.accept();
+        alert.accept()
     except:
         logging.info("No alert removed (probably due to there not being any)")
         pass
@@ -676,10 +676,10 @@ def form_fill(driver, target_form):
 
                 # Some forms show an alert with a confirmation
                 try:
-                    alert = driver.switch_to_alert()
+                    alert = driver.switch_to.alert
                     alertText = alert.text
                     logging.info("Removed alert: " +  alertText)
-                    alert.accept();
+                    alert.accept()
                 except:
                     logging.info("No alert removed (probably due to there not being any)")
                     pass
@@ -690,10 +690,10 @@ def form_fill(driver, target_form):
 
         # Check if submission caused an "are you sure" alert
         try:
-            alert = driver.switch_to_alert()
+            alert = driver.switch_to.alert
             alertText = alert.text
             logging.info("Removed alert: " +  alertText)
-            alert.accept();
+            alert.accept()
         except:
             logging.info("No alert removed (probably due to there not being any)")
 
@@ -710,10 +710,10 @@ def ui_form_fill(driver, target_form):
 
     # Ensure we don't have any alerts before filling in form
     try:
-        alert = driver.switch_to_alert()
+        alert = driver.switch_to.alert
         alertText = alert.text
         logging.info("Removed alert: " +  alertText)
-        alert.accept();
+        alert.accept()
     except:
         logging.info("No alert removed (probably due to there not being any)")
         pass

@@ -145,7 +145,7 @@ def parse_form(el, driver):
         if(iframe_body.get_attribute("contenteditable") == "true"):
             form.add_iframe_body(iframe_id)
 
-        driver.switch_to.default_content();
+        driver.switch_to.default_content()
 
     # print("Finally adding form: ", form)
     # for inputs in form.inputs:

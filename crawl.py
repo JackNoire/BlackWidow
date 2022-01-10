@@ -16,7 +16,8 @@ args = parser.parse_args()
 root_dirname = os.path.dirname(__file__)
 dynamic_path = os.path.join(root_dirname, 'form_files', 'dynamic')
 for f in os.listdir(dynamic_path):
-    os.remove(os.path.join(dynamic_path, f))
+    if f != ".gitignore":
+        os.remove(os.path.join(dynamic_path, f))
 
 WebDriver.add_script = add_script
 

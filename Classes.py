@@ -1389,7 +1389,7 @@ class Crawler:
                 time.sleep(1)
         except UnexpectedAlertPresentException:
             logging.warning("Alert detected")
-            alert = driver.switch_to_alert()
+            alert = driver.switch_to.alert
             alert.dismiss()
 
             # Check if double check is needed...
@@ -1443,7 +1443,7 @@ class Crawler:
             wait_json = driver.execute_script("return JSON.stringify(need_to_wait)")
         except UnexpectedAlertPresentException:
             logging.warning("Alert detected")
-            alert = driver.switch_to_alert()
+            alert = driver.switch_to.alert
             alert.dismiss()
         wait_json = driver.execute_script("return JSON.stringify(need_to_wait)")
         wait = json.loads(wait_json)
@@ -1513,7 +1513,7 @@ class Crawler:
 
         # Try to clean up alerts
         try:
-            alert = driver.switch_to_alert()
+            alert = driver.switch_to.alert
             alert.dismiss()
         except NoAlertPresentException:
             pass
